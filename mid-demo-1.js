@@ -6,7 +6,7 @@ app.get('/index.html', function(request, response){
     response.sendFile(__dirname + "/" + "index.html");
 });
 
-app.get('/process_get', function(request, response){
+app.get("/process_get", function(req, res){
     response = {
         first_name:req.query.first_name,
         last_name:req.query.last_name
