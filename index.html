@@ -1,35 +1,66 @@
-<html>
+<html lang="en">
 <head>
-  <title>File Upload demo in Node.js</title>
-
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
-
-  <script>
-      $(document).ready(function() {
-          $('#uploadForm').submit(function() {
-              $("#status".empty().text("File is uploading..."));
-
-              $(this).ajaxSubmit({error: function(xhr) {
-                  status('Error: ' + xhr.status);
-          },
-              success: function(response) {
-              console.log(response)
-              $("#status").empty().text(response);  
-          }
-      });
-      return false;
-      });
-});
-  </script>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VUE JS DEMO</title>
 </head>
 
 <body>
-    <h1>Using Express.js to Demonstrate File Upload</h1>
-    <form id="uploadForm" enctype="multipart/form-data" action="/uploaded" method="post">
-      <input type="file" name="myfile" multiple /><br/><br/>
-      <input type="submit" value="Upload Image" name="submit"><br/><br/>
-      <span id="status"></span>
-    </form>
+    <!-- Create a div tagf with "App" ID-->
+<div id="app">
+    <!-- any code here for VUE JS control-->
+    <p>{{ title }} - {{ author }} - {{ age }}</p>
+    <!-- Events on Vue using v-on -->
+    <button v-on:click="age++">Get Older</button>
+    <button v-on:click="age--">Get Younger</button>
+    <button @click="title = 'The title has changed. '">Change Title</button>
+    
+</div>
+
+    <!-- Two-way data binding-->
+
+<div id="two-way-binding">
+        <p>{{ message }}</p>
+        <input v-model="message" />
+</div>
+
+    <!-- using v-if -->
+<div id="conditional-rendering">
+    <span v-if="seen">Now you see me</span>
+</div>
+
+<div id="books">
+    <div v-if="showBooks">
+        <p>{{ btitle }} - {{ bauthor }} - {{ year }}</p>
+        </div>
+
+    <button @click="toggleShowBooks">
+        <span v-if="showBooks">Hide Books</span>
+        <span v-else>Show Books</span>
+    </button>
+</div>
+
+<!-- using v-for directive -->
+<div id="list-rendering">
+<ol>
+    <li v-for="todo in todos">
+        {{ todo.text }}
+    </li>
+</ol>
+</div>
+
+
+
+
+    <!-- this won't be controlled by Vue -->
+
+<script src="app.js"></script>
+<script src="two-way.js"></script>
+<script src="conditionalif.js"></script>
+<script src="books.js"></script>
+<script src="listfor.js"></script>
 </body>
+
 </html>
